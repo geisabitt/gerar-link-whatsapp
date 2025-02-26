@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Link para WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Gerador de Link para WhatsApp</h2>
+    <label for="numero">Número (com DDD):</label>
+    <input type="text" id="numero" placeholder="Ex: 5521986369426">
+    <br>
+    <label for="mensagem">Mensagem:</label>
+    <input type="text" id="mensagem" placeholder="Digite sua mensagem">
+    <br>
+    <button onclick="gerarLink()">Gerar Link</button>
+    <p id="resultado"></p>
+    <script>
+        function gerarLink() {
+            let numero = document.getElementById("numero").value;
+            let mensagem = document.getElementById("mensagem").value;
+            let urlApi = "https://api.whatsapp.com/send?phone=" + numero + "&text=" + encodeURIComponent(mensagem);
+            document.getElementById("resultado").innerHTML = `<a href="${urlApi}" target="_blank">${urlApi}</a>`;
+        }
+    </script>
+</body>
+</html>
